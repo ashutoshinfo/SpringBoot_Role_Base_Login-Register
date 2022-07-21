@@ -77,5 +77,6 @@ public class SecurityConfigur extends WebSecurityConfigurerAdapter {
 					.and()
 				.exceptionHandling().accessDeniedPage("/403.html");
 	}
+	
 
 }
