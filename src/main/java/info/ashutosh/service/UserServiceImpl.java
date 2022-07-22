@@ -38,7 +38,6 @@ public class UserServiceImpl implements UserService {
 		boolean[] count = new boolean[3];
 		if (findByEmail.isPresent()) {
 			count[0] = true;
-
 		}
 
 		if (findByUsername.isPresent()) {
