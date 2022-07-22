@@ -47,9 +47,9 @@ public class UserServiceImpl implements UserService {
 		if (count[0] & count[1]) {
 			count[2] = true;
 			return count;
-		} else {
-			return count;
 		}
+		return count;
+
 	}
 
 	@Override
