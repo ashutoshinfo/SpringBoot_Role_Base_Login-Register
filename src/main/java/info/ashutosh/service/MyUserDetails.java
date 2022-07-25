@@ -2,11 +2,13 @@ package info.ashutosh.service;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import info.ashutosh.model.Role;
 import info.ashutosh.model.User;
 
 public class MyUserDetails implements UserDetails {
@@ -22,6 +24,11 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// user.getRoles().stream().filter(role->System.out.println(role.getName().equals("oo"))).collect(Collectors.tol)
+		
+		Collection<Role> roles = user.getRoles();
+		Stream<Role> stream = roles.stream();
+		stream.map(role->role.getName()).collect(Collectors.toList());
+		
 		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName()))
 				.collect(Collectors.toList());
 	}
