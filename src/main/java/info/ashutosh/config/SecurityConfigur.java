@@ -52,6 +52,8 @@ public class SecurityConfigur extends WebSecurityConfigurerAdapter {
 			.antMatchers("/profile/**").hasAuthority("ROLE_USER")
 			.antMatchers("/dashboard/**").hasAuthority("ROLE_ADMIN")
 			.and()
+//			.requiresChannel().antMatchers("/profile").requiresSecure()
+//			.and()
 			.formLogin()
 				.loginPage("/login")
 					.usernameParameter("username")

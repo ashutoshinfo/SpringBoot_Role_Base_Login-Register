@@ -33,3 +33,4 @@ public class SpringBootCustomRegisterLoginApplication implements CommandLineRunn
 	}
 
 }
+
