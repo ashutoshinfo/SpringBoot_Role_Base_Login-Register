@@ -3,6 +3,8 @@ package info.ashutosh.transferobject.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserRegistrationDto {
 
 	@NotEmpty(message = "First Name cannot be empty.")
@@ -22,13 +24,16 @@ public class UserRegistrationDto {
 	@NotEmpty(message = "Password cannot be empty.")
 	private String password;
 
-	public UserRegistrationDto(String firstName, String lastName, String username, String email, String password) {
+	private String image;
+
+	public UserRegistrationDto(String firstName, String lastName, String username, String email, String password, String image) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.image = image;
 	}
 
 	public UserRegistrationDto() {
@@ -73,6 +78,14 @@ public class UserRegistrationDto {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image.getOriginalFilename();
 	}
 
 }

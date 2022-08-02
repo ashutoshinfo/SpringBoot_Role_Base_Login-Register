@@ -35,6 +35,8 @@ public class User {
 
 	private String password;
 
+	private String image;
+
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Collection<Role> roles;
@@ -42,8 +44,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String username, String email, String password,
-			Collection<Role> roles) {
+	public User(String firstName, String lastName, String username, String email, String password, String image, Collection<Role> roles) {
 		super();
 
 		this.firstName = firstName;
@@ -51,6 +52,7 @@ public class User {
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.image = image;
 		this.roles = roles;
 	}
 
@@ -102,6 +104,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public Collection<Role> getRoles() {
 		return roles;
 	}
@@ -112,8 +122,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", roles=" + roles.toString() + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", password=" + password + ", roles=" + roles.toString() + "]";
 	}
 
 }

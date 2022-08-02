@@ -60,7 +60,8 @@
 
 
 				<p class="h2">User Registration</p>
-				<form action="#" th:action="@{/register/register}" th:object="${newUser}" method="post" id="idForm">
+				<form action="#" th:action="@{/register/register}" th:object="${newUser}" method="post" id="idForm"
+					enctype="multipart/form-data">
 					<div class="form-group  mb-2">
 						<label for="exampleInputEmail1">First Name</label>
 						<div th:if="!${#fields.hasErrors('lastName')}">
@@ -185,8 +186,15 @@
 								Password Requiered !
 							</div>
 						</div>
-
-
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Profile Image</label><br>
+						<input type="file" name="image" id="image" class="form-control-file">
+					</div>
+					<div th:if="${#fields.hasAnyErrors()}">
+						<ul>
+							<li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+						</ul>
 					</div>
 					<div class="form-group form-check">
 						<!--<input type="checkbox" class="form-check-input" id="exampleCheck1">
