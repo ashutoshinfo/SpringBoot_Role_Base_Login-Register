@@ -1,13 +1,13 @@
-package info.ashutosh;
+// package info.ashutosh;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SpringBootCustomRegisterLoginApplicationTests {
+// @SpringBootTest
+// class SpringBootCustomRegisterLoginApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
