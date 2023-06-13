@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Connection;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -30,9 +29,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	Environment environment;
-	
-	@Autowired
-	Connection connection;
 
 	@Override
 	public User registerUser(UserRegistrationDto dto) {
