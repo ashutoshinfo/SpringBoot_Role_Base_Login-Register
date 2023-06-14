@@ -55,17 +55,32 @@
 					</li>-->
 
 				</ul>
-				<form class="d-flex">
-					<ul class="navbar-nav me-auto mb-2 mb-md-0">
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/register}">Register</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/login}">Sign
-								in</a></li>
-					</ul>
-					<!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>-->
-				</form>
 
+				<div th:if="${#authorization.expression('isAuthenticated()')}">
+					<form class="d-flex">
+						<ul class="navbar-nav me-auto mb-2 mb-md-0">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/profile}">Profile</a></li>
+						</ul>
+						<ul class="navbar-nav me-auto mb-2 mb-md-0">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/logout}">Sign out</a></li>
+						</ul>
+					</form>
+				</div>
+
+				<div th:unless="${#authorization.expression('isAuthenticated()')}">
+					<form class="d-flex">
+						<ul class="navbar-nav me-auto mb-2 mb-md-0">
+							<li class="nav-item"><a class="nav-link"
+								th:href="@{/register}">Register</a></li>
+							<li class="nav-item"><a class="nav-link" th:href="@{/login}">Sign
+									in</a></li>
+						</ul>
+						<!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>-->
+					</form>
+				</div>
 
 			</div>
 
@@ -77,8 +92,8 @@
 	<main role="main" class="container">
 
 		<div class="starter-template">
-			<h1>Every Error, Exeption, and Output is Predefine !</h1>
-			<p class="lead">
+			<h1 id="quot"></h1>
+			<p class="lead fade-in-text" id="desc" style="display: none;">
 				Use this document as a way to quickly start any new Notes.<br>
 				All you get is this text and a mostly barebones HTML document.
 			</p>
@@ -89,5 +104,57 @@
 
 
 </body>
+
+<script>
+      const text = "Every Error, Exeption, and Output is Predefine !"; // The sentence you want to animate
+      const typingText = document.getElementById("quot");
+
+      function typeWriter(text, index) {
+        if (index < text.length) {
+          typingText.textContent += text.charAt(index);
+          index++;
+          setTimeout(() => typeWriter(text, index), 100); // Delay between each character
+        }
+        
+        setTimeout(function() {
+ var element = document.getElementById("desc");
+        element.style.display = "block";
+}, 4000);
+        
+      }
+      
+
+      typeWriter(text, 0);
+    </script>
+    <style>
+      .typing-effect {
+        font-size: 24px;
+        font-family: monospace;
+        padding: 10px;
+        
+        white-space: nowrap; /* Ensure the text stays in a single line */
+        overflow: hidden; /* Hide any overflowing text */
+       animation: typing-animation 3s steps(30) 1;
+      }
+
+      @keyframes typing-animation {
+        0% { width: 0; }
+        100% { width: 100%; }
+      }
+      
+      @keyframes fade-in-animation {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .fade-in-text {
+        opacity: 0;
+        animation: fade-in-animation 5s ease-in-out forwards;
+      }
+    </style>
 
 </html>
